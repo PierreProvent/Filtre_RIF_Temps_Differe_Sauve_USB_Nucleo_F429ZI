@@ -79,7 +79,7 @@ int main()
     wait(1) ;   // Attendre une seconde pour remplir le buffer signal in[]
     drive_ADC.detach() ;
     // Convolution avec filtre RIF
-    for (int i = 0; i < TAILLE_TAB - NB_COEFF ; i++ ) {
+    for (int i = 0; i <= TAILLE_TAB - NB_COEFF ; i++ ) {
         for (int j = 0 ; j < NB_COEFF ; j++) {
             out[i] += coeff_filtre[j]*in[i - j + NB_COEFF -1] ;
         }
