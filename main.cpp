@@ -1,9 +1,9 @@
 #include "mbed.h"
 #include "USBHostMSD.h"
 
-#define fech 40000      // Fréquence d'échantillonnage souhaitée
+#define fech 40000              // Fréquence d'échantillonnage souhaitée
 #define TAILLE_TAB (fech/10)    // Pour stocker 1/10 s du signal
-// Donc fmin signal = 10 Hz
+                                // Donc fmin signal = 10 Hz
 
 Serial pc(USBTX, USBRX);
 
@@ -67,7 +67,7 @@ int main()
     for (int i = 0; i < TAILLE_TAB ; i++ )
         out[i] = 0 ;
     drive_ADC.attach_us(&acquisition_ADC,1000000/fech);
-    sortie.period_us(2000);
+    sortie.period_us(500);
     sortie.write(0.5f) ; // rapport cyclique 1/2
     pc.printf("\033[2J"); // Sequence escape pour effacer la console
     pc.printf("\033[0;0H"); // Curseur en 0 ; 0
